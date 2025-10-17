@@ -8,8 +8,15 @@ package edu.ucaldas.behavior;
 // Si no puede manejar, debe pasar al siguiente en la cadena.
 
 public class SupportHandler {
+    // TODO: crea la cadena: Basic → Supervisor → Manager
     public static Handler createChain() {
-        // TODO: crea la cadena: Basic → Supervisor → Manager
-        return null;
+        Handler basic = new BasicSupportHandler();
+        Handler supervisor = new SupervisorHandler();
+        Handler manager = new ManagerHandler();
+
+        basic.setNext(supervisor);
+        supervisor.setNext(manager);
+
+        return basic;
     }
 }
